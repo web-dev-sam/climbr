@@ -1,0 +1,57 @@
+# climbr
+
+A hangboard training PWA that does exactly one thing: it shows an **elbow angle**
+to hold, and changes it at random intervals.
+
+The angle is the one between your forearm and upper arm. `180°` is a straight-arm
+dead hang; smaller is more flexed, so `45°` is a deep lock-off. When the target
+angle drops you pull up; when it rises you lower down.
+
+## Difficulty
+
+One control sets everything. Higher tiers run longer, change faster, pull more
+often, and unlock deeper lock-offs.
+
+| Tier | Duration | Hold | Pull bias | Depth |
+| ---- | -------- | ---- | --------- | ----- |
+| Warm-up | 5–12s | 3.0–4.5s | 0.20 | 135° |
+| Easy | 12–22s | 2.4–3.6s | 0.30 | 100° |
+| Steady | 22–34s | 1.8–2.8s | 0.45 | 75° |
+| Hard | 34–46s | 1.3–2.1s | 0.60 | 35° |
+| Brutal | 46–60s | 0.9–1.6s | 0.72 | 25° |
+
+Depth is the deepest angle a tier may ask for, and every cap is a real rung on
+the `RUNGS` ladder. A cap that falls between rungs would silently round up to the
+nearest one.
+
+**Infinity mode** keeps the tier's pacing but drops the duration cap, so the
+session runs until you tap.
+
+## Seeds
+
+A session is a pure function of its seed. `seed + difficulty + mode` regenerates
+the exact same duration, hold lengths, and angle sequence every time — which is
+the point: save a seed, train it again, and compare.
+
+Any text works as a seed; generated ones avoid `0/O/1/I/L` so they can be read
+aloud. Finite sessions trim only their final hold so the run lands exactly on the
+seeded duration; everything before that is identical in either mode.
+
+History is stored in `localStorage`. Entries can be labelled, rated 1–5 for how
+hard they actually felt, replayed, and deleted.
+
+## Controls
+
+Tap anywhere during a session to end it early, then save or discard. Backgrounding
+the app ends it the same way. The screen is kept awake while training, and each
+change is announced with a click and a vibration (toggleable).
+
+## Development
+
+```sh
+npm install
+npm run dev       # dev server, service worker enabled
+npm run build     # vue-tsc typecheck + production build
+npm run preview   # serve the built app
+npm run icons     # regenerate PWA icons from scripts/gen-icons.mjs
+```
