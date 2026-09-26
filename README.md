@@ -10,8 +10,7 @@ _A hangboard training PWA that does exactly one thing: it shows an elbow angle t
 &nbsp;
 
 ## Why does this exist?
-1. It does exactly one thing, and one control sets everything.
-2. A session is a pure function of its seed: save a seed, train it again, and compare.
+Hangboard sessions get boring and predictable; random lock-off angles are more fun.
 
 ## The angle
 

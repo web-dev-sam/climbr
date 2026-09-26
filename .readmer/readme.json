@@ -1,10 +1,7 @@
 {
   "title": "climbr",
   "tagline": "A hangboard training PWA that does exactly one thing: it shows an elbow angle to hold, and changes it at random intervals. 🧗",
-  "why": [
-    "It does exactly one thing, and one control sets everything.",
-    "A session is a pure function of its seed: save a seed, train it again, and compare."
-  ],
+  "why": "Hangboard sessions get boring and predictable; random lock-off angles are more fun.",
   "sections": [
     {
       "title": "The angle",
